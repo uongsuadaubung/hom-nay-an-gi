@@ -9,6 +9,7 @@
   // URL ứng dụng Google Apps Script bạn vừa triển khai
   // Lưu ý: Nếu URL này rỗng, ứng dụng sẽ chỉ chạy bằng mock data và giả lập chờ 2.5s
   const GOOGLE_SHEET_API_URL = 'https://script.google.com/macros/s/REDACTED_API_KEY/exec'; 
+  // const GOOGLE_SHEET_API_URL = ''; 
 
   onMount(() => {
     visible = true;

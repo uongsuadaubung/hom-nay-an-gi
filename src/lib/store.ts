@@ -13,3 +13,6 @@ export const selectedVeg = writable<FoodItem | null>(null);
 
 export const mainMenu = writable<FoodItem[]>(mockMains);
 export const vegMenu = writable<FoodItem[]>(mockVegs);
+
+// Track món đang xem cách nấu
+export const selectedRecipeItem = writable<FoodItem | null>(null);
