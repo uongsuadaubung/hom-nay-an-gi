@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF512F;
+  --color-secondary: #F09819;
+  --color-accent: #FF512F;
+  --color-bg-dark: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-light: #334155;
+  --font-family-body: 'Inter', system-ui, sans-serif;
+  --font-family-heading: 'Outfit', system-ui, sans-serif;
+}
+
+:root {
+  font-family: var(--font-family-body);
+  color-scheme: dark;
+  color: #f8fafc;
+  background-color: var(--color-bg-dark);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+}
+
+/* Global utility for text gradient */
+@utility text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
