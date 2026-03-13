@@ -16,7 +16,8 @@
   }
 
   function formatContent(content: string): string[] {
-    return content.split('\n').filter(line => line.trim() !== '');
+    // Chuyển literal \n (từ Google Sheet/CSV) thành newline thật, rồi split
+    return content.replace(/\\n/g, '\n').split('\n').filter(line => line.trim() !== '');
   }
 
   let activeRecipe = $derived<Recipe | undefined>(

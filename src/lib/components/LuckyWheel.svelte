@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { appState, currentSpinResult, spinPhase, mainMenu, vegMenu } from '../store';
+  import { appState, selectedMain, selectedVeg, mainMenu, vegMenu } from '../store';
 
   // Vòng quay luôn hiển thị đúng WHEEL_SLICES ô cố định, không phụ thuộc số món
   const WHEEL_SLICES = 10;
@@ -15,9 +15,6 @@
   let wheelStyles = $derived(
     `transform: rotate(${rotation}deg); transition: transform ${isSpinning ? '8s cubic-bezier(0.2, 0.8, 0.2, 1)' : '0s'};`
   );
-
-  // Danh sách thật — chỉ dùng để bốc kết quả sau khi quay xong
-  let activeFoods = $derived($spinPhase === 'main' ? $mainMenu : $vegMenu);
 
   // Thông số vòng quay (luôn dựa theo WHEEL_SLICES)
   const sliceAngle = 360 / WHEEL_SLICES;
@@ -52,9 +49,14 @@
     setTimeout(() => {
       isSpinning = false;
 
-      // Bốc ngẫu nhiên MÓN ĂN từ danh sách thật SAU KHI quay xong
-      const picked = activeFoods[Math.floor(Math.random() * activeFoods.length)];
-      currentSpinResult.set(picked);
+      // Bốc ngẫu nhiên MÓN CHÍNH + RAU cùng lúc sau khi quay xong
+      const mains = $mainMenu;
+      const vegs = $vegMenu;
+      const pickedMain = mains[Math.floor(Math.random() * mains.length)];
+      const pickedVeg = vegs[Math.floor(Math.random() * vegs.length)];
+
+      selectedMain.set(pickedMain);
+      selectedVeg.set(pickedVeg);
       appState.set('result');
     }, 8100);
   }
